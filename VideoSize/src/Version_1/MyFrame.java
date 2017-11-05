@@ -16,7 +16,7 @@ public class MyFrame extends JFrame {
 	String StringForJComboBox,SelectedObject;
 	JCheckBox JCheckBoxAudioFile;
 	int ObjectNumberName = 0,j;
-	VideoObject[] VideoCamera = new VideoObject[100000];
+	VideoObject[] VideoCamera = new VideoObject[1024];
 	boolean BolleanCheckEdit=true;
 	float i, k, CheckEdit=0,VideoBitrate,VideoLength,AudioFrequency,BitCapacity,FullResult,AudioResult,VideoResult,AllCameraResult=0;
 	String a, b;
