@@ -30,20 +30,20 @@ public class MyFrame extends JFrame {
 		//b2 = new JButton("Посчитать");
 		JLabelVideoBitrate = new JLabel("Введите битрейт видео(кбит/сек)");
 		JLabelVideoBitrate.setBounds(10,10,250,25);
-		JLabelVideoBitrate.setForeground(Color.PINK);
+		JLabelVideoBitrate.setForeground(Color.getHSBColor(3, 4, 43));
 		JTextFieldVideoBitrate = new JTextField(10);
 		JTextFieldVideoBitrate.setBounds(10,40,250,25);
-		JTextFieldVideoBitrate.setBackground(Color.PINK);
+		//JTextFieldVideoBitrate.setBackground(Color.WHITE);
 		//JTextFieldVideoBitrate.setEditable(false);
 		JLabelVideoLength = new JLabel("Введите длительность видео(сек)");
 		JLabelVideoLength.setBounds(10,70,250,25);
-		JLabelVideoLength.setForeground(Color.YELLOW);
+		JLabelVideoLength.setForeground(Color.ORANGE);
 		JTextFieldVideoLength = new JTextField(10);
 		JTextFieldVideoLength.setBounds(10,100,250,25);
 		//JTextFieldVideoBitrate.setEditable(false);
 		JLabelWithAudio = new JLabel("Видео со звуком");
 		JLabelWithAudio.setBounds(10,150,250,25);
-		JLabelWithAudio.setForeground(Color.YELLOW);
+		JLabelWithAudio.setForeground(Color.ORANGE);
 		
 		JCheckBoxAudioFile = new JCheckBox();
 		JCheckBoxAudioFile.setSelected(false);
