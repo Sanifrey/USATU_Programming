@@ -8,75 +8,93 @@ import java.awt.*;
 import java.awt.event.*;
 
 public class MyFrame extends JFrame {
-
-	JButton b1, b2, JButtonDecideAllCameras, JCreateObject, JButtonSaveParam;
-	JLabel JLabelVideoBitrate, JLabelVideoLength, JLabelAudioFrequency, JLabelWithAudio, JLabelBitCapacity,
-			JLabelResult, JLabelFullResult, JLabelResultCameras, JLabelResultCamerasNumber, l3, l4;
-	JTextField JTextFieldVideoBitrate, JTextFieldVideoLength, JTextFieldAudioFrequency, JTextFieldAudioBitCapacity,
-			JTextFieldResult, t2;
+	
+	JButton b1, b2,JButtonDecideAllCameras,JCreateObject, JButtonSaveParam ;
+	JLabel JLabelVideoBitrate,JLabelVideoLength, JLabelAudioFrequency, JLabelWithAudio,JLabelBitCapacity,JLabelResult, JLabelFullResult,JLabelResultCameras,JLabelResultCamerasNumber, l3, l4;
+	JTextField JTextFieldVideoBitrate,JTextFieldVideoLength,JTextFieldAudioFrequency,JTextFieldAudioBitCapacity,JTextFieldResult, t2;
 	JComboBox JComboBoxNumberObject;
-	String StringForJComboBox, SelectedObject;
+	String StringForJComboBox,SelectedObject;
 	JCheckBox JCheckBoxAudioFile;
-	int ObjectNumberName = 0, j;
-	VideoObject[] VideoCamera = new VideoObject[33];
-	boolean BolleanCheckEdit = true;
-	float i, k, CheckEdit = 0, VideoBitrate, VideoLength, AudioFrequency, BitCapacity, FullResult, AudioResult,
-			VideoResult, AllCameraResult = 0;
+	int ObjectNumberName = 0,j;
+	VideoObject[] VideoCamera = new VideoObject[100000];
+	boolean BolleanCheckEdit=true;
+	float i, k, CheckEdit=0,VideoBitrate,VideoLength,AudioFrequency,BitCapacity,FullResult,AudioResult,VideoResult,AllCameraResult=0;
 	String a, b;
 	eHandler handler = new eHandler();
-
 	public MyFrame(String s) {
-
+		
 		super(s);
 		setLayout(null);
-
+		//b1 = new JButton("Clear VSEEEEE");
+		//b1.setBounds(10,10,200,200);
+		//b2 = new JButton("Посчитать");
 		JLabelVideoBitrate = new JLabel("Введите битрейт видео(кбит/сек)");
-		JLabelVideoBitrate.setBounds(10, 10, 250, 25);
+		JLabelVideoBitrate.setBounds(10,10,250,25);
+		JLabelVideoBitrate.setForeground(Color.YELLOW);
 		JTextFieldVideoBitrate = new JTextField(10);
-		JTextFieldVideoBitrate.setBounds(10, 40, 250, 25);
-
+		JTextFieldVideoBitrate.setBounds(10,40,250,25);
+		JTextFieldVideoBitrate.setBackground(Color.white);
+		//JTextFieldVideoBitrate.setEditable(false);
 		JLabelVideoLength = new JLabel("Введите длительность видео(сек)");
-		JLabelVideoLength.setBounds(10, 70, 250, 25);
+		JLabelVideoLength.setBounds(10,70,250,25);
+		JLabelVideoLength.setForeground(Color.YELLOW);
 		JTextFieldVideoLength = new JTextField(10);
-		JTextFieldVideoLength.setBounds(10, 100, 250, 25);
-
+		JTextFieldVideoLength.setBounds(10,100,250,25);
+		//JTextFieldVideoBitrate.setEditable(false);
 		JLabelWithAudio = new JLabel("Видео со звуком");
-		JLabelWithAudio.setBounds(10, 150, 250, 25);
+		JLabelWithAudio.setBounds(10,150,250,25);
+		JLabelWithAudio.setForeground(Color.YELLOW);
+		
 		JCheckBoxAudioFile = new JCheckBox();
 		JCheckBoxAudioFile.setSelected(false);
-		JCheckBoxAudioFile.setBounds(10, 170, 25, 25);
+		JCheckBoxAudioFile.setBounds(10,170,25,25);
+		JCheckBoxAudioFile.setBackground(Color.black);
+		
 		JLabelAudioFrequency = new JLabel("Введите частоту дескритизации(Гц)");
 		JLabelAudioFrequency.setBounds(10, 200, 250, 25);
+		JLabelAudioFrequency.setForeground(Color.YELLOW);
 		JTextFieldAudioFrequency = new JTextField(10);
 		JTextFieldAudioFrequency.setBounds(10, 230, 250, 25);
 		JTextFieldAudioFrequency.setEditable(false);
 		JLabelBitCapacity = new JLabel("Введите разрядность регистра");
 		JLabelBitCapacity.setBounds(10, 260, 250, 25);
+		JLabelBitCapacity.setForeground(Color.YELLOW);
 		JTextFieldAudioBitCapacity = new JTextField(10);
 		JTextFieldAudioBitCapacity.setBounds(10, 290, 250, 25);
 		JTextFieldAudioBitCapacity.setEditable(false);
 		JButtonDecideAllCameras = new JButton("Посчитать для всех камер");
 		JButtonDecideAllCameras.setBounds(10, 420, 200, 25);
+		JButtonDecideAllCameras.setBackground(Color.yellow);
 		JLabelResult = new JLabel("Выбранная камера:");
-		JLabelResult.setBounds(10, 360, 250, 25);
+		JLabelResult.setBounds(10,360,250,25);
+		JLabelResult.setForeground(Color.YELLOW);
 		JLabelFullResult = new JLabel("_____________");
 		JLabelFullResult.setBounds(140, 360, 250, 25);
-
+		JLabelFullResult.setForeground(Color.WHITE);
+		//JTextFieldResult = new JTextField();
+		//JTextFieldResult.setBounds(10, 380, 250, 25);
+		//JTextFieldResult.setEnabled(false);
+		//JTextFieldResult.setEnabled(false);
+		//JTextFieldAudioFrequency.setEditable(false);
 		JLabelResultCameras = new JLabel("Все созданные камеры:");
-		JLabelResultCameras.setBounds(10, 390, 250, 25);
+		JLabelResultCameras.setBounds(10,390,250,25);
+		JLabelResultCameras.setForeground(Color.YELLOW);
 		JLabelResultCamerasNumber = new JLabel("_____________");
-		JLabelResultCamerasNumber.setBounds(165, 390, 250, 25);
+		JLabelResultCamerasNumber.setBounds(165,390,250,25);
+		JLabelResultCamerasNumber.setForeground(Color.WHITE);
 		JCreateObject = new JButton("Добавить камеру");
 		JCreateObject.setBounds(290, 50, 150, 25);
+		JCreateObject.setBackground(Color.yellow);
 		JComboBoxNumberObject = new JComboBox();
 		JComboBoxNumberObject.setBounds(290, 100, 150, 25);
 		JButtonSaveParam = new JButton("Посчитать и сохранить параметры для этой камеры");
 		JButtonSaveParam.setBounds(10, 330, 340, 25);
-
+		JButtonSaveParam.setBackground(Color.yellow);
 		l3 = new JLabel("");
 		l4 = new JLabel("");
 		t2 = new JTextField(10);
-
+		//add(b1);
+	//	add(b2);
 		add(JLabelVideoBitrate);
 		add(JTextFieldVideoBitrate);
 		add(JLabelVideoLength);
@@ -95,203 +113,275 @@ public class MyFrame extends JFrame {
 		add(JButtonSaveParam);
 		add(JLabelResultCameras);
 		add(JLabelResultCamerasNumber);
-
+		//add(JTextFieldResult);
+		//add(l4);
 		JCheckBoxAudioFile.addActionListener(handler);
 		JButtonDecideAllCameras.addActionListener(handler);
 		JCreateObject.addActionListener(handler);
 		JComboBoxNumberObject.addActionListener(handler);
 		JButtonSaveParam.addActionListener(handler);
-		setDefaultCloseOperation(EXIT_ON_CLOSE);
+	    setDefaultCloseOperation(EXIT_ON_CLOSE);
 
+	    
 		ObjectNumberName++;
-		StringForJComboBox = String.valueOf(ObjectNumberName);
-
+		StringForJComboBox=String.valueOf(ObjectNumberName);
+		//JOptionPane.showMessageDialog(null, "dasd");
+		//VideoObject[] VideoCamera = new VideoObject[32];
 		VideoCamera[ObjectNumberName] = new VideoObject();
-
+		//VideoCameraGlobal[ObjectNumberName] = new VideoObject();
 		JComboBoxNumberObject.addItem(StringForJComboBox);
-
+		//JOptionPane.showMessageDialog(null, "dasd");
+		//System.out.println(VideoCamera[ObjectNumberName].ObjectVideoLength);
+		//JOptionPane.showMessageDialog(null, "dasd");
 		JTextFieldVideoBitrate.setText(String.valueOf(VideoCamera[ObjectNumberName].ObjectVideoBitrate));
-
+		//JOptionPane.showMessageDialog(null, "dasd");
 		JTextFieldVideoLength.setText(String.valueOf(VideoCamera[ObjectNumberName].ObjectVideoLength));
 		JTextFieldAudioFrequency.setText(String.valueOf(VideoCamera[ObjectNumberName].ObjectAudioFrequency));
 		JTextFieldAudioBitCapacity.setText(String.valueOf(VideoCamera[ObjectNumberName].ObjectAudioBitCapacity));
-
+		
+		
+		/*i = Integer.parseInt(t1.getText());
+		k = Integer.parseInt(t2.getText());
+		a = " Ваше первое число теперь равно "+ i;
+		b = " Ваше второе число теперь равно "+ k;
+		l3.setText(a);
+		l4.setText(b);*/
+	    
 		JTextFieldVideoBitrate.addKeyListener(new KeyAdapter() {
-			public void keyTyped(KeyEvent e) {
-				if (JTextFieldVideoBitrate.getText().length() >= 9)
-					e.consume();
-			}
+		    public void keyTyped(KeyEvent e) { 
+		        if (JTextFieldVideoBitrate.getText().length() >= 9 ) // limit textfield to 3 characters
+		            e.consume(); 
+		    }  
 		});
 		JTextFieldVideoLength.addKeyListener(new KeyAdapter() {
-			public void keyTyped(KeyEvent e) {
-				if (JTextFieldVideoLength.getText().length() >= 9)
-					e.consume();
-			}
+		    public void keyTyped(KeyEvent e) { 
+		        if (JTextFieldVideoLength.getText().length() >= 9 ) // limit textfield to 3 characters
+		            e.consume(); 
+		    }  
 		});
 		JTextFieldAudioFrequency.addKeyListener(new KeyAdapter() {
-			public void keyTyped(KeyEvent e) {
-				if (JTextFieldAudioFrequency.getText().length() >= 9)
-					e.consume();
-			}
+		    public void keyTyped(KeyEvent e) { 
+		        if (JTextFieldAudioFrequency.getText().length() >= 9 ) // limit textfield to 3 characters
+		            e.consume(); 
+		    }  
 		});
 		JTextFieldAudioBitCapacity.addKeyListener(new KeyAdapter() {
-			public void keyTyped(KeyEvent e) {
-				if (JTextFieldAudioBitCapacity.getText().length() >= 9)
-					e.consume();
-			}
+		    public void keyTyped(KeyEvent e) { 
+		        if (JTextFieldAudioBitCapacity.getText().length() >= 9 ) // limit textfield to 3 characters
+		            e.consume(); 
+		    }  
 		});
-
+		
+		
 	}
+	public class eHandler implements ActionListener{
 
-	public class eHandler implements ActionListener {
 
 		public void actionPerformed(ActionEvent e) {
-
+			
+			
 			try {
-				if (e.getSource() == JCreateObject) {
-					ObjectNumberName++;
-					StringForJComboBox = String.valueOf(ObjectNumberName);
-
-					VideoCamera[ObjectNumberName] = new VideoObject();
-
-					JComboBoxNumberObject.addItem(StringForJComboBox);
-
-					JTextFieldVideoBitrate.setText(String.valueOf(VideoCamera[ObjectNumberName].ObjectVideoBitrate));
-
-					JTextFieldVideoLength.setText(String.valueOf(VideoCamera[ObjectNumberName].ObjectVideoLength));
-					JTextFieldAudioFrequency
-							.setText(String.valueOf(VideoCamera[ObjectNumberName].ObjectAudioFrequency));
-					JTextFieldAudioBitCapacity
-							.setText(String.valueOf(VideoCamera[ObjectNumberName].ObjectAudioBitCapacity));
-					JComboBoxNumberObject.setSelectedIndex(ObjectNumberName - 1);
-
-				}
-			} catch (Exception ep) {
-				JOptionPane.showMessageDialog(null, "Модель не создалась");
+			if(e.getSource()==JCreateObject) {
+				ObjectNumberName++;
+				StringForJComboBox=String.valueOf(ObjectNumberName);
+				//JOptionPane.showMessageDialog(null, "dasd");
+				//VideoObject[] VideoCamera = new VideoObject[32];
+				VideoCamera[ObjectNumberName] = new VideoObject();
+				//VideoCameraGlobal[ObjectNumberName] = new VideoObject();
+				JComboBoxNumberObject.addItem(StringForJComboBox);
+				//JOptionPane.showMessageDialog(null, "dasd");
+				//System.out.println(VideoCamera[ObjectNumberName].ObjectVideoLength);
+				//JOptionPane.showMessageDialog(null, "dasd");
+				JTextFieldVideoBitrate.setText(String.valueOf(VideoCamera[ObjectNumberName].ObjectVideoBitrate));
+				//JOptionPane.showMessageDialog(null, "dasd");
+				JTextFieldVideoLength.setText(String.valueOf(VideoCamera[ObjectNumberName].ObjectVideoLength));
+				JTextFieldAudioFrequency.setText(String.valueOf(VideoCamera[ObjectNumberName].ObjectAudioFrequency));
+				JTextFieldAudioBitCapacity.setText(String.valueOf(VideoCamera[ObjectNumberName].ObjectAudioBitCapacity));
+				JComboBoxNumberObject.setSelectedIndex(ObjectNumberName-1);
+				
+				/*i = Integer.parseInt(t1.getText());
+				k = Integer.parseInt(t2.getText());
+				a = " Ваше первое число теперь равно "+ i;
+				b = " Ваше второе число теперь равно "+ k;
+				l3.setText(a);
+				l4.setText(b);*/
 			}
-
+			}
+			catch (Exception ep) {JOptionPane.showMessageDialog(null, "Модель не создалась");}
+			
 			try {
-				if (e.getSource() == JComboBoxNumberObject) {
-
-					SelectedObject = (String) JComboBoxNumberObject.getSelectedItem();
-					JTextFieldVideoBitrate
-							.setText(String.valueOf(VideoCamera[Integer.valueOf(SelectedObject)].ObjectVideoBitrate));
-					JTextFieldVideoLength
-							.setText(String.valueOf(VideoCamera[Integer.valueOf(SelectedObject)].ObjectVideoLength));
-					JTextFieldAudioFrequency
-							.setText(String.valueOf(VideoCamera[Integer.valueOf(SelectedObject)].ObjectAudioFrequency));
-					JTextFieldAudioBitCapacity.setText(
-							String.valueOf(VideoCamera[Integer.valueOf(SelectedObject)].ObjectAudioBitCapacity));
+				if(e.getSource()==JComboBoxNumberObject) {
+					
+					SelectedObject=(String) JComboBoxNumberObject.getSelectedItem();
+					JTextFieldVideoBitrate.setText(String.valueOf(VideoCamera[Integer.valueOf(SelectedObject)].ObjectVideoBitrate));
+					JTextFieldVideoLength.setText(String.valueOf(VideoCamera[Integer.valueOf(SelectedObject)].ObjectVideoLength));
+					JTextFieldAudioFrequency.setText(String.valueOf(VideoCamera[Integer.valueOf(SelectedObject)].ObjectAudioFrequency));
+					JTextFieldAudioBitCapacity.setText(String.valueOf(VideoCamera[Integer.valueOf(SelectedObject)].ObjectAudioBitCapacity));
 					JCheckBoxAudioFile.setSelected(VideoCamera[Integer.valueOf(SelectedObject)].Audio);
-
-					if (VideoCamera[Integer.valueOf(SelectedObject)].ObjectCameraTotal != 0) {
-						JLabelFullResult.setText(
-								String.valueOf(VideoCamera[Integer.valueOf(SelectedObject)].ObjectCameraTotal) + " Мб");
-					} else {
+			//		BolleanCheckEdit=VideoCamera[Integer.valueOf(SelectedObject)].Audio;
+					if (VideoCamera[Integer.valueOf(SelectedObject)].ObjectCameraTotal!=0) {
+						JLabelFullResult.setText(String.valueOf(VideoCamera[Integer.valueOf(SelectedObject)].ObjectCameraTotal)+" Мб");
+					}else {
 						JLabelFullResult.setText(String.valueOf("_____________"));
 					}
-
-					if (!(JCheckBoxAudioFile.isSelected())) {
+					
+					if (!(JCheckBoxAudioFile.isSelected())){
 						JTextFieldAudioFrequency.setEditable(false);
 						JTextFieldAudioBitCapacity.setEditable(false);
-
-					} else {
+						
+					}
+					else {
 						JTextFieldAudioFrequency.setEditable(true);
 						JTextFieldAudioBitCapacity.setEditable(true);
 					}
-
+					
+				/*	if ((VideoCamera[Integer.valueOf(SelectedObject)].audio)){
+						JTextFieldAudioFrequency.setEditable(true);
+						JTextFieldAudioBitCapacity.setEditable(true);
+						
+					}
+					else {
+						JTextFieldAudioFrequency.setEditable(false);
+						JTextFieldAudioBitCapacity.setEditable(false);
+					}*/
+					//JTextFieldVideoBitrate.setText(Float.toString(VideoCamera[ObjectNumberName].ObjectVideoLength));
+					//JOptionPane.showMessageDialog(null, SelectedObject);
 				}
-			} catch (Exception ep) {
-				JOptionPane.showMessageDialog(null, "модель не выбралась");
-			}
-
+			}catch (Exception ep) {JOptionPane.showMessageDialog(null, "модель не выбралась");}
+			
 			try {
-				if (e.getSource() == JButtonSaveParam) {
-
-					SelectedObject = (String) JComboBoxNumberObject.getSelectedItem();
-
-					if ((JTextFieldAudioFrequency.getText().equals(""))
-							|| (JTextFieldAudioFrequency.getText().equals(" "))
-							|| (JTextFieldAudioFrequency.getText().equals("  "))) {
-
+				if(e.getSource()==JButtonSaveParam) {
+					
+					SelectedObject=(String) JComboBoxNumberObject.getSelectedItem();
+					//JOptionPane.showMessageDialog(null, SelectedObject);
+					if((JTextFieldAudioFrequency.getText().equals("") )||(JTextFieldAudioFrequency.getText().equals(" "))||(JTextFieldAudioFrequency.getText().equals("  "))) {
+						//System.out.println("В проверке");
 						JTextFieldAudioFrequency.setText("0");
 					}
-					if ((JTextFieldAudioBitCapacity.getText().equals(""))
-							|| (JTextFieldAudioBitCapacity.getText().equals(" "))
-							|| (JTextFieldAudioBitCapacity.getText().equals("  "))) {
-
+					if((JTextFieldAudioBitCapacity.getText().equals("") )||(JTextFieldAudioBitCapacity.getText().equals(" "))||(JTextFieldAudioBitCapacity.getText().equals("  "))) {
+						//System.out.println("В проверке");
 						JTextFieldAudioBitCapacity.setText("0");
 					}
-
-					if ((JTextFieldVideoBitrate.getText().equals("")) || (JTextFieldVideoBitrate.getText().equals(" "))
-							|| (JTextFieldVideoBitrate.getText().equals("  "))) {
-
+					//JOptionPane.showMessageDialog(null, SelectedObject);
+					if((JTextFieldVideoBitrate.getText().equals("") )||(JTextFieldVideoBitrate.getText().equals(" "))||(JTextFieldVideoBitrate.getText().equals("  "))) {
+						//System.out.println("В проверке");
 						JTextFieldVideoBitrate.setText("0");
 					}
-					if ((JTextFieldVideoLength.getText().equals("")) || (JTextFieldVideoLength.getText().equals(" "))
-							|| (JTextFieldVideoLength.getText().equals("  "))) {
-
+					if((JTextFieldVideoLength.getText().equals("") )||(JTextFieldVideoLength.getText().equals(" "))||(JTextFieldVideoLength.getText().equals("  "))) {
+						//System.out.println("В проверке");
 						JTextFieldVideoLength.setText("0");
 					}
-					VideoCamera[Integer.valueOf(SelectedObject)].ObjectVideoBitrate = Integer
-							.parseInt(JTextFieldVideoBitrate.getText());
-					VideoCamera[Integer.valueOf(SelectedObject)].ObjectVideoLength = Integer
-							.parseInt(JTextFieldVideoLength.getText());
-					VideoCamera[Integer.valueOf(SelectedObject)].ObjectAudioFrequency = Integer
-							.parseInt(JTextFieldAudioFrequency.getText());
-					VideoCamera[Integer.valueOf(SelectedObject)].ObjectAudioBitCapacity = Integer
-							.parseInt(JTextFieldAudioBitCapacity.getText());
-					VideoCamera[Integer.valueOf(SelectedObject)].Audio = JCheckBoxAudioFile.isSelected();
+					VideoCamera[Integer.valueOf(SelectedObject)].ObjectVideoBitrate=Integer.parseInt(JTextFieldVideoBitrate.getText());
+					VideoCamera[Integer.valueOf(SelectedObject)].ObjectVideoLength=Integer.parseInt(JTextFieldVideoLength.getText());
+					VideoCamera[Integer.valueOf(SelectedObject)].ObjectAudioFrequency=Integer.parseInt(JTextFieldAudioFrequency.getText());
+					VideoCamera[Integer.valueOf(SelectedObject)].ObjectAudioBitCapacity=Integer.parseInt(JTextFieldAudioBitCapacity.getText());
+					VideoCamera[Integer.valueOf(SelectedObject)].Audio=JCheckBoxAudioFile.isSelected();
+					
+					
+					
+				
+						if((JCheckBoxAudioFile.isSelected())) {
+							//System.out.println("В проверке");
 
-					if ((JCheckBoxAudioFile.isSelected())) {
-
-						VideoBitrate = Integer.parseInt(JTextFieldVideoBitrate.getText());
-						VideoLength = Integer.parseInt(JTextFieldVideoLength.getText());
-						AudioFrequency = Integer.parseInt(JTextFieldAudioFrequency.getText());
-						BitCapacity = Integer.parseInt(JTextFieldAudioBitCapacity.getText());
-						AudioResult = AudioFrequency * VideoLength * BitCapacity / 1024;
-						VideoResult = VideoBitrate * VideoLength * 60 / 8192;
-						FullResult = AudioResult + VideoResult;
-
-						JLabelFullResult.setText(String.valueOf(FullResult + " Мб"));
-					}
-					if (!(JCheckBoxAudioFile.isSelected())) {
-
-						VideoBitrate = Integer.parseInt(JTextFieldVideoBitrate.getText());
-						VideoLength = Integer.parseInt(JTextFieldVideoLength.getText());
-						VideoResult = VideoBitrate * VideoLength * 60 / 8192;
-						FullResult = VideoResult;
-						JLabelFullResult.setText(String.valueOf(FullResult + " Мб"));
-						VideoCamera[Integer.valueOf(SelectedObject)].ObjectCameraTotal = FullResult;
-					}
-					VideoCamera[Integer.valueOf(SelectedObject)].ObjectCameraTotal = FullResult;
-
+							VideoBitrate=Integer.parseInt(JTextFieldVideoBitrate.getText());
+							VideoLength=Integer.parseInt(JTextFieldVideoLength.getText());
+							AudioFrequency=Integer.parseInt(JTextFieldAudioFrequency.getText());
+							BitCapacity=Integer.parseInt(JTextFieldAudioBitCapacity.getText());
+							AudioResult=AudioFrequency*VideoLength*BitCapacity/1024;
+							VideoResult=VideoBitrate*VideoLength*60/8192;
+							FullResult=AudioResult+VideoResult;
+							//VideoCamera[Integer.valueOf(SelectedObject)].ObjectCameraTotal=FullResult;
+							JLabelFullResult.setText(String.valueOf(FullResult+" Мб"));
+							}
+						if(!(JCheckBoxAudioFile.isSelected())) {
+							//System.out.println("не В проверке");
+							VideoBitrate=Integer.parseInt(JTextFieldVideoBitrate.getText());
+							VideoLength=Integer.parseInt(JTextFieldVideoLength.getText());
+							VideoResult=VideoBitrate*VideoLength*60/8192;
+							FullResult=VideoResult;
+							JLabelFullResult.setText(String.valueOf(FullResult+" Мб"));
+							VideoCamera[Integer.valueOf(SelectedObject)].ObjectCameraTotal=FullResult;
+							}
+						VideoCamera[Integer.valueOf(SelectedObject)].ObjectCameraTotal=FullResult;
+					
+					//JTextFieldVideoBitrate.setText(String.valueOf(VideoCamera[Integer.valueOf(SelectedObject)].ObjectVideoBitrate));
+					//JTextFieldVideoLength.setText(String.valueOf(VideoCamera[ObjectNumberName].ObjectVideoLength));
+					//JTextFieldAudioFrequency.setText(String.valueOf(VideoCamera[ObjectNumberName].ObjectAudioFrequency));
+					//JTextFieldAudioBitCapacity.setText(String.valueOf(VideoCamera[ObjectNumberName].ObjectAudioBitCapacity));
+					//JTextFieldVideoBitrate.setText(Float.toString(VideoCamera[ObjectNumberName].ObjectVideoLength));
+					//JOptionPane.showMessageDialog(null, SelectedObject);
 				}
-			} catch (Exception ep) {
-				JOptionPane.showMessageDialog(null, "Заполните строки числами");
-			}
-
-			if (e.getSource() == JCheckBoxAudioFile) {
-
-				if (!(JCheckBoxAudioFile.isSelected())) {
+			}catch (Exception ep) {JOptionPane.showMessageDialog(null, "Заполните строки числами");}
+			
+			
+			
+			
+			if(e.getSource()==JCheckBoxAudioFile) {
+				//BolleanCheckEdit=!(BolleanCheckEdit);
+				if (!(JCheckBoxAudioFile.isSelected())){
 					JTextFieldAudioFrequency.setEditable(false);
 					JTextFieldAudioBitCapacity.setEditable(false);
-
-				} else {
+					
+				}
+				else {
 					JTextFieldAudioFrequency.setEditable(true);
 					JTextFieldAudioBitCapacity.setEditable(true);
 				}
-
+				
+				/*i = Integer.parseInt(t1.getText());
+				k = Integer.parseInt(t2.getText());
+				a = " Ваше первое число теперь равно "+ i;
+				b = " Ваше второе число теперь равно "+ k;
+				l3.setText(a);
+				l4.setText(b);*/
 			}
-			if (e.getSource() == JButtonDecideAllCameras) {
-				for (j = 0; j < ObjectNumberName; j++) {
-					AllCameraResult = AllCameraResult + VideoCamera[Integer.valueOf(j + 1)].ObjectCameraTotal;
-
+			if (e.getSource()==JButtonDecideAllCameras) {
+				for (j=0;j<ObjectNumberName;j++) {
+					AllCameraResult=AllCameraResult+VideoCamera[Integer.valueOf(j+1)].ObjectCameraTotal;
+					
 				}
-				JLabelResultCamerasNumber.setText(String.valueOf(AllCameraResult + " Мб"));
+			JLabelResultCamerasNumber.setText(String.valueOf(AllCameraResult+" Мб"));
 			}
-			AllCameraResult = 0;
-
-		}
+			AllCameraResult=0;
+			/*if(e.getSource()==b1) {
+				t2.setText(null);
+				//t1.setText(null);
+				l3.setText("");
+				l4.setText("");
+			}*/
+		/*	try {
+				if((e.getSource()==JButtonDecide)&&(JCheckBoxAudioFile.isSelected())) {
+					VideoBitrate=Integer.parseInt(JTextFieldVideoBitrate.getText());
+					VideoLength=Integer.parseInt(JTextFieldVideoLength.getText());
+					AudioFrequency=Integer.parseInt(JTextFieldAudioFrequency.getText());
+					BitCapacity=Integer.parseInt(JTextFieldAudioBitCapacity.getText());
+					AudioResult=AudioFrequency*VideoLength*BitCapacity/1024;
+					VideoResult=VideoBitrate*VideoLength*60/8192;
+					FullResult=AudioResult+VideoResult;
+					VideoCamera[Integer.valueOf(SelectedObject)].ObjectCameraTotal=FullResult;
+					JLabelFullResult.setText(String.valueOf(FullResult+" Мб"));
+					}
+				if((e.getSource()==JButtonDecide)&&(!(JCheckBoxAudioFile.isSelected()))) {
+					VideoBitrate=Integer.parseInt(JTextFieldVideoBitrate.getText());
+					VideoLength=Integer.parseInt(JTextFieldVideoLength.getText());
+					VideoResult=VideoBitrate*VideoLength*60/8192;
+					FullResult=VideoResult;
+					JLabelFullResult.setText(String.valueOf(FullResult+" Мб"));
+					VideoCamera[Integer.valueOf(SelectedObject)].ObjectCameraTotal=FullResult;
+					}
+			}catch (Exception ex) {JOptionPane.showMessageDialog(null, "Введите в поля числа");
+			
+*/
+			
+			/*try {
+				if((e.getSource()==JButtonDecide)&&(CheckEdit%2==0)) {
+					VideoBitrate=Integer.parseInt(JTextFieldVideoBitrate.getText());
+					VideoLength=Integer.parseInt(JTextFieldVideoLength.getText());
+					VideoResult=VideoBitrate*VideoLength*60/8192;
+					FullResult=VideoResult;
+					JTextFieldResult.setText(String.valueOf(FullResult));
+					}
+			}catch (Exception ex1) {JOptionPane.showMessageDialog(null, "Введите в поля числа");
+			} */
+	}}
 	}
-}
