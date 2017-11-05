@@ -33,7 +33,7 @@ public class MyFrame extends JFrame {
 		JLabelVideoBitrate.setForeground(Color.PINK);
 		JTextFieldVideoBitrate = new JTextField(10);
 		JTextFieldVideoBitrate.setBounds(10,40,250,25);
-		JTextFieldVideoBitrate.setBackground(Color.white);
+		JTextFieldVideoBitrate.setBackground(Color.PINK);
 		//JTextFieldVideoBitrate.setEditable(false);
 		JLabelVideoLength = new JLabel("¬ведите длительность видео(сек)");
 		JLabelVideoLength.setBounds(10,70,250,25);
