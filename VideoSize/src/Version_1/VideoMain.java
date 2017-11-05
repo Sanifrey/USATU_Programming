@@ -16,7 +16,7 @@ public class VideoMain {
 		r.setResizable(false); 
 		r.setLocationRelativeTo(null);
 		r.getContentPane().setBackground(Color.BLACK ); 
-		ImageIcon image = new ImageIcon("C:\\Users\\Comp\\Desktop\\–√– - —“¿–÷≈¬¿ web- ƒ»Á‡ÈÌ\\13.png");
+		ImageIcon image = new ImageIcon("C:\\Users\\Comp\\eclipse-workspace\\USATU_Programming\\13.png");
 		  r.setIconImage(image.getImage());
 	}
 }
