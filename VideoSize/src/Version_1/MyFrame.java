@@ -30,7 +30,7 @@ public class MyFrame extends JFrame {
 		//b2 = new JButton("Посчитать");
 		JLabelVideoBitrate = new JLabel("Введите битрейт видео(кбит/сек)");
 		JLabelVideoBitrate.setBounds(10,10,250,25);
-		JLabelVideoBitrate.setForeground(Color.green);
+		JLabelVideoBitrate.setForeground(Color.brown);
 		JTextFieldVideoBitrate = new JTextField(10);
 		JTextFieldVideoBitrate.setBounds(10,40,250,25);
 		JTextFieldVideoBitrate.setBackground(Color.white);
