@@ -12,8 +12,9 @@ public class Main {
 		int ColDliny = sc.nextInt();//сканируем длину слова
 		String[] StrokaTexta = new String[ColStrok];//объявление одномерного массива типа String
 		int[][] TextInt = new int[ColStrok + 1][ColDliny];//объявление двумерного массива типа int
-		int[] CountInt = new int[ColStrok];//объявление одномерного массива типа int для счетчика различий
-		int i, j, y = -100;
+		int[][] CountInt = new int[ColStrok][ColStrok];//объявление одномерного массива типа int для счетчика различий
+		int[][] CountInt2 = new int[ColStrok][ColStrok];//объявление одномерного массива типа int для счетчика сходств
+		int i, j,h,g=-100, y = -100;
 
 		char[] CharStroka;
 		for (i = 0; i < ColStrok; i++) {
@@ -25,27 +26,37 @@ public class Main {
 			}
 			CharStroka = StrokaTexta[i].toCharArray();//String->Char
 			for (j = 0; j < ColDliny; j++) {
-				TextInt[i][j] = Character.getNumericValue(CharStroka[j]);//Char->Int
+				TextInt[i][j] = Character.getNumericValue(CharStroka[j]);//Char->Int посимвольно
 			}
 		}
+		for (h = 0; h < ColStrok; h++) {
 		for (i = 0; i < ColStrok; i++) {
 			for (j = 0; j < ColDliny; j++) {
-				if (i + 1 == ColStrok) {//Проверка чтобы массив не сравнимался с "пустым массивом"(последним)
+				if (i==h) {//Проверка чтобы массив не сравнимался с "пустым массивом"(последним)
+					//System.out.println("ERROR: ========Сработала зашита от сравнения одинаковых строк========");
 					break;
 				}
 
-				if (TextInt[i][j] != TextInt[i + 1][j]) {//Счетчик различий
-					CountInt[i] += 1;
-					System.out.println("Различие в" + (i + 1) + "строке" + (j + 1) + "символе");//Чисто для отладки и наглядного процесса, можно убрать
+				if (TextInt[h][j] != TextInt[i][j]) {//Проверка на различия
+					CountInt[h][i] += 1;
+					System.out.println("LOG:        Различие в     " + (h+1) + " строке " + " со строкой "+(i+1)+ " в символе "+ (j + 1) );//Детектирует о нахождении различия
 				} else {
-					System.out.println("Различий нет");//Когда идёт проверка и различий не найдено
+					CountInt2[h][i] += 1;
+					System.out.println("LOG:        Различий нет в " + (h+1) + " строке " + " со строкой "+(i+1)+ " в символе "+ (j + 1) );//Детектирует о нахождении сходства
 				}
 			}
-			if (CountInt[i] > y) {//ведётся счётчик различий
-				y = CountInt[i];
-			}
 
+
+		
+		if (CountInt[h][i] > y) {//ведётся счётчик различий
+			y = CountInt[h][i];
+		}
+		if (CountInt2[h][i] > g){//ведётся счётчик сходств
+			g = CountInt2[h][i];
+		}
+		}
 		}
 		System.out.println("Максимально различий было:" + y);
+		System.out.println("Максиамально сходств было:" + g);
 	}
 }
