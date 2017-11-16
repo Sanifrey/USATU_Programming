@@ -101,7 +101,7 @@ public class MyFrame extends JFrame {
 		add(JCheckBoxAudioFile); // Добавляем элемент 
 		add(JLabelAudioFrequency); // Добавляем элемент 
 		add(JLabelWithAudio); // Добавляем элемент 
-		add(JTextFieldAudioFrequency); // Добавляем элемент 
+		add(JTextFieldAudioFrequency); // Добавляем элемент d
 		add(JLabelBitCapacity); // Добавляем элемент 
 		add(JTextFieldAudioBitCapacity); // Добавляем элемент 
 		add(JButtonDecideAllCameras); // Добавляем элемент 
