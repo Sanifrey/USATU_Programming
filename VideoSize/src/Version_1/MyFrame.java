@@ -29,7 +29,7 @@ public class MyFrame extends JFrame {
 		//b2 = new JButton("Посчитать");
 		JLabelVideoBitrate = new JLabel("Введите битрейт видео(кбит/сек)");// резервируем память для объекта JLabelVideoBitrate
 		JLabelVideoBitrate.setBounds(10,10,250,25); // метод setBounds, который отвечает за точное размещение.Методу передаются 4 значения: отступ слева, отступ сверху, длина компонента, высота компонента.
-		JLabelVideoBitrate.setForeground(Color.getHSBColor(3, 4, 43));
+		JLabelVideoBitrate.setForeground(Color.ORANGE);
 		JTextFieldVideoBitrate = new JTextField(10);// резервируем память для объекта JTextFieldVideoBitrate
 		JTextFieldVideoBitrate.setBounds(10,40,250,25);// метод setBounds, который отвечает за точное размещение.Методу передаются 4 значения: отступ слева, отступ сверху, длина компонента, высота компонента.
 		//JTextFieldVideoBitrate.setBackground(Color.WHITE);
@@ -51,22 +51,22 @@ public class MyFrame extends JFrame {
 		
 		JLabelAudioFrequency = new JLabel("Введите частоту дескритизации(Гц)");// резервируем память для объекта JLabelAudioFrequency
 		JLabelAudioFrequency.setBounds(10, 200, 250, 25);// метод setBounds, который отвечает за точное размещение.Методу передаются 4 значения: отступ слева, отступ сверху, длина компонента, высота компонента.
-		JLabelAudioFrequency.setForeground(Color.YELLOW);
+		JLabelAudioFrequency.setForeground(Color.ORANGE);
 		JTextFieldAudioFrequency = new JTextField(10);// резервируем память для объекта JTextFieldAudioFrequency
 		JTextFieldAudioFrequency.setBounds(10, 230, 250, 25);// метод setBounds, который отвечает за точное размещение.Методу передаются 4 значения: отступ слева, отступ сверху, длина компонента, высота компонента.
 		JTextFieldAudioFrequency.setEditable(false);
 		JLabelBitCapacity = new JLabel("Введите разрядность регистра");// резервируем память для объекта JLabelBitCapacity
 		JLabelBitCapacity.setBounds(10, 260, 250, 25);// метод setBounds, который отвечает за точное размещение.Методу передаются 4 значения: отступ слева, отступ сверху, длина компонента, высота компонента.
-		JLabelBitCapacity.setForeground(Color.YELLOW);
+		JLabelBitCapacity.setForeground(Color.ORANGE);
 		JTextFieldAudioBitCapacity = new JTextField(10);// резервируем память для объекта JTextFieldAudioBitCapacity
 		JTextFieldAudioBitCapacity.setBounds(10, 290, 250, 25);// метод setBounds, который отвечает за точное размещение.Методу передаются 4 значения: отступ слева, отступ сверху, длина компонента, высота компонента.
 		JTextFieldAudioBitCapacity.setEditable(false);
 		JButtonDecideAllCameras = new JButton("Посчитать для всех камер");// резервируем память для объекта JButtonDecideAllCameras
 		JButtonDecideAllCameras.setBounds(10, 420, 200, 25);// метод setBounds, который отвечает за точное размещение.Методу передаются 4 значения: отступ слева, отступ сверху, длина компонента, высота компонента.
-		JButtonDecideAllCameras.setBackground(Color.yellow);
+		JButtonDecideAllCameras.setBackground(Color.ORANGE);
 		JLabelResult = new JLabel("Выбранная камера:");// резервируем память для объекта JLabelResult
 		JLabelResult.setBounds(10,360,250,25);// метод setBounds, который отвечает за точное размещение.Методу передаются 4 значения: отступ слева, отступ сверху, длина компонента, высота компонента.
-		JLabelResult.setForeground(Color.YELLOW);
+		JLabelResult.setForeground(Color.ORANGE);
 		JLabelFullResult = new JLabel("_____________");// резервируем память для объекта JLabelFullResult
 		JLabelFullResult.setBounds(140, 360, 250, 25);// метод setBounds, который отвечает за точное размещение.Методу передаются 4 значения: отступ слева, отступ сверху, длина компонента, высота компонента.
 		JLabelFullResult.setForeground(Color.WHITE);
@@ -77,18 +77,18 @@ public class MyFrame extends JFrame {
 		//JTextFieldAudioFrequency.setEditable(false);
 		JLabelResultCameras = new JLabel("Все созданные камеры:");// резервируем память для объекта JLabelResultCameras
 		JLabelResultCameras.setBounds(10,390,250,25);// метод setBounds, который отвечает за точное размещение.Методу передаются 4 значения: отступ слева, отступ сверху, длина компонента, высота компонента.
-		JLabelResultCameras.setForeground(Color.YELLOW);
+		JLabelResultCameras.setForeground(Color.ORANGE);
 		JLabelResultCamerasNumber = new JLabel("_____________");// резервируем память для объекта JLabelResultCamerasNumber
 		JLabelResultCamerasNumber.setBounds(165,390,250,25);// метод setBounds, который отвечает за точное размещение.Методу передаются 4 значения: отступ слева, отступ сверху, длина компонента, высота компонента.
 		JLabelResultCamerasNumber.setForeground(Color.WHITE);
 		JCreateObject = new JButton("Добавить камеру");// резервируем память для объекта JCreateObject
 		JCreateObject.setBounds(290, 50, 150, 25);// метод setBounds, который отвечает за точное размещение.Методу передаются 4 значения: отступ слева, отступ сверху, длина компонента, высота компонента.
-		JCreateObject.setBackground(Color.yellow);
+		JCreateObject.setBackground(Color.ORANGE);
 		JComboBoxNumberObject = new JComboBox();// резервируем память для объекта JComboBoxNumberObject 
 		JComboBoxNumberObject.setBounds(290, 100, 150, 25);// метод setBounds, который отвечает за точное размещение.Методу передаются 4 значения: отступ слева, отступ сверху, длина компонента, высота компонента.
 		JButtonSaveParam = new JButton("Посчитать и сохранить параметры для этой камеры");// резервируем память для объекта JButtonSaveParam
 		JButtonSaveParam.setBounds(10, 330, 340, 25);// метод setBounds, который отвечает за точное размещение.Методу передаются 4 значения: отступ слева, отступ сверху, длина компонента, высота компонента.
-		JButtonSaveParam.setBackground(Color.yellow);
+		JButtonSaveParam.setBackground(Color.ORANGE);
 		l3 = new JLabel("");// резервируем память для объекта l3
 		l4 = new JLabel("");// резервируем память для объекта l4
 		t2 = new JTextField(10);// резервируем память для объекта t2
