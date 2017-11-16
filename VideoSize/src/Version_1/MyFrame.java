@@ -9,122 +9,121 @@ import java.awt.event.*;
 
 public class MyFrame extends JFrame {
 	
-	JButton b1, b2,JButtonDecideAllCameras,JCreateObject, JButtonSaveParam ;
-	JLabel JLabelVideoBitrate,JLabelVideoLength, JLabelAudioFrequency, JLabelWithAudio,JLabelBitCapacity,JLabelResult, JLabelFullResult,JLabelResultCameras,JLabelResultCamerasNumber, l3, l4;
-	JTextField JTextFieldVideoBitrate,JTextFieldVideoLength,JTextFieldAudioFrequency,JTextFieldAudioBitCapacity,JTextFieldResult, t2;
-	JComboBox JComboBoxNumberObject;
-	String StringForJComboBox,SelectedObject;
-	JCheckBox JCheckBoxAudioFile;
-	int ObjectNumberName = 0,j;
-	VideoObject[] VideoCamera = new VideoObject[1024];
-	boolean BolleanCheckEdit=true;
-	float i, k, CheckEdit=0,VideoBitrate,VideoLength,AudioFrequency,BitCapacity,FullResult,AudioResult,VideoResult,AllCameraResult=0;
-	String a, b;
-	eHandler handler = new eHandler();
-	public MyFrame(String s) {
+	JButton b1, b2,JButtonDecideAllCameras,JCreateObject, JButtonSaveParam ; //Объявляем переменные типа JButton
+	JLabel JLabelVideoBitrate,JLabelVideoLength, JLabelAudioFrequency, JLabelWithAudio,JLabelBitCapacity,JLabelResult, JLabelFullResult,JLabelResultCameras,JLabelResultCamerasNumber, l3, l4; //Объявляем переменные типа JLabel
+	JTextField JTextFieldVideoBitrate,JTextFieldVideoLength,JTextFieldAudioFrequency,JTextFieldAudioBitCapacity,JTextFieldResult, t2; //Объявляем переменные типа JTextField
+	JComboBox JComboBoxNumberObject; //Объявляем переменные типа JComboBox
+	String StringForJComboBox,SelectedObject,a, b; //Объявляем переменные типа String
+	JCheckBox JCheckBoxAudioFile; //Объявляем переменные типа JCheckBox
+	int ObjectNumberName = 0,j; //Объявляем переменные типа int и задаем значение для переменной ObjectNumberName = 0 ,которое является началом счёта
+	VideoObject[] VideoCamera = new VideoObject[1024]; //Создаем экземпляр класса VideoObject[1024] и возвращает ссылку на вновь созданный объект
+	//boolean BolleanCheckEdit=true;//Создаем переменную типа boolean и задаем ей значение true, не знаю для чего, тк потом она становится false
+	float i, k, CheckEdit=0,VideoBitrate,VideoLength,AudioFrequency,BitCapacity,FullResult,AudioResult,VideoResult,AllCameraResult=0;//Создаем переменные типа float
+	eHandler handler = new eHandler(); //Создаем экземпляр класса eHandler и возвращает ссылку на вновь созданный объект
+	public MyFrame(String s) {//Объявляем метод MyFrame
 		
-		super(s);
-		setLayout(null);
+		super(s);// Создаем суперкласс
+		setLayout(null);//Устанавливаем значение null для "менеджера размещения"
 		//b1 = new JButton("Clear VSEEEEE");
 		//b1.setBounds(10,10,200,200);
 		//b2 = new JButton("Посчитать");
-		JLabelVideoBitrate = new JLabel("Введите битрейт видео(кбит/сек)");
-		JLabelVideoBitrate.setBounds(10,10,250,25);
+		JLabelVideoBitrate = new JLabel("Введите битрейт видео(кбит/сек)");// резервируем память для объекта JLabelVideoBitrate
+		JLabelVideoBitrate.setBounds(10,10,250,25); // метод setBounds, который отвечает за точное размещение.Методу передаются 4 значения: отступ слева, отступ сверху, длина компонента, высота компонента.
 		JLabelVideoBitrate.setForeground(Color.getHSBColor(3, 4, 43));
-		JTextFieldVideoBitrate = new JTextField(10);
-		JTextFieldVideoBitrate.setBounds(10,40,250,25);
+		JTextFieldVideoBitrate = new JTextField(10);// резервируем память для объекта JTextFieldVideoBitrate
+		JTextFieldVideoBitrate.setBounds(10,40,250,25);// метод setBounds, который отвечает за точное размещение.Методу передаются 4 значения: отступ слева, отступ сверху, длина компонента, высота компонента.
 		//JTextFieldVideoBitrate.setBackground(Color.WHITE);
 		//JTextFieldVideoBitrate.setEditable(false);
 		JLabelVideoLength = new JLabel("Введите длительность видео(сек)");
-		JLabelVideoLength.setBounds(10,70,250,25);
+		JLabelVideoLength.setBounds(10,70,250,25);// метод setBounds, который отвечает за точное размещение.Методу передаются 4 значения: отступ слева, отступ сверху, длина компонента, высота компонента.
 		JLabelVideoLength.setForeground(Color.ORANGE);
-		JTextFieldVideoLength = new JTextField(10);
-		JTextFieldVideoLength.setBounds(10,100,250,25);
+		JTextFieldVideoLength = new JTextField(10);// резервируем память для объекта JTextFieldVideoLength
+		JTextFieldVideoLength.setBounds(10,100,250,25);// метод setBounds, который отвечает за точное размещение.Методу передаются 4 значения: отступ слева, отступ сверху, длина компонента, высота компонента.
 		//JTextFieldVideoBitrate.setEditable(false);
-		JLabelWithAudio = new JLabel("Видео со звуком");
-		JLabelWithAudio.setBounds(10,150,250,25);
+		JLabelWithAudio = new JLabel("Видео со звуком");// резервируем память для объекта JLabelWithAudio
+		JLabelWithAudio.setBounds(10,150,250,25);// метод setBounds, который отвечает за точное размещение.Методу передаются 4 значения: отступ слева, отступ сверху, длина компонента, высота компонента.
 		JLabelWithAudio.setForeground(Color.ORANGE);
 		
-		JCheckBoxAudioFile = new JCheckBox();
+		JCheckBoxAudioFile = new JCheckBox();// резервируем память для объекта JCheckBoxAudioFile
 		JCheckBoxAudioFile.setSelected(false);
-		JCheckBoxAudioFile.setBounds(10,170,25,25);
+		JCheckBoxAudioFile.setBounds(10,170,25,25);// метод setBounds, который отвечает за точное размещение.Методу передаются 4 значения: отступ слева, отступ сверху, длина компонента, высота компонента.
 		JCheckBoxAudioFile.setBackground(Color.black);
 		
-		JLabelAudioFrequency = new JLabel("Введите частоту дескритизации(Гц)");
-		JLabelAudioFrequency.setBounds(10, 200, 250, 25);
+		JLabelAudioFrequency = new JLabel("Введите частоту дескритизации(Гц)");// резервируем память для объекта JLabelAudioFrequency
+		JLabelAudioFrequency.setBounds(10, 200, 250, 25);// метод setBounds, который отвечает за точное размещение.Методу передаются 4 значения: отступ слева, отступ сверху, длина компонента, высота компонента.
 		JLabelAudioFrequency.setForeground(Color.YELLOW);
-		JTextFieldAudioFrequency = new JTextField(10);
-		JTextFieldAudioFrequency.setBounds(10, 230, 250, 25);
+		JTextFieldAudioFrequency = new JTextField(10);// резервируем память для объекта JTextFieldAudioFrequency
+		JTextFieldAudioFrequency.setBounds(10, 230, 250, 25);// метод setBounds, который отвечает за точное размещение.Методу передаются 4 значения: отступ слева, отступ сверху, длина компонента, высота компонента.
 		JTextFieldAudioFrequency.setEditable(false);
-		JLabelBitCapacity = new JLabel("Введите разрядность регистра");
-		JLabelBitCapacity.setBounds(10, 260, 250, 25);
+		JLabelBitCapacity = new JLabel("Введите разрядность регистра");// резервируем память для объекта JLabelBitCapacity
+		JLabelBitCapacity.setBounds(10, 260, 250, 25);// метод setBounds, который отвечает за точное размещение.Методу передаются 4 значения: отступ слева, отступ сверху, длина компонента, высота компонента.
 		JLabelBitCapacity.setForeground(Color.YELLOW);
-		JTextFieldAudioBitCapacity = new JTextField(10);
-		JTextFieldAudioBitCapacity.setBounds(10, 290, 250, 25);
+		JTextFieldAudioBitCapacity = new JTextField(10);// резервируем память для объекта JTextFieldAudioBitCapacity
+		JTextFieldAudioBitCapacity.setBounds(10, 290, 250, 25);// метод setBounds, который отвечает за точное размещение.Методу передаются 4 значения: отступ слева, отступ сверху, длина компонента, высота компонента.
 		JTextFieldAudioBitCapacity.setEditable(false);
-		JButtonDecideAllCameras = new JButton("Посчитать для всех камер");
-		JButtonDecideAllCameras.setBounds(10, 420, 200, 25);
+		JButtonDecideAllCameras = new JButton("Посчитать для всех камер");// резервируем память для объекта JButtonDecideAllCameras
+		JButtonDecideAllCameras.setBounds(10, 420, 200, 25);// метод setBounds, который отвечает за точное размещение.Методу передаются 4 значения: отступ слева, отступ сверху, длина компонента, высота компонента.
 		JButtonDecideAllCameras.setBackground(Color.yellow);
-		JLabelResult = new JLabel("Выбранная камера:");
-		JLabelResult.setBounds(10,360,250,25);
+		JLabelResult = new JLabel("Выбранная камера:");// резервируем память для объекта JLabelResult
+		JLabelResult.setBounds(10,360,250,25);// метод setBounds, который отвечает за точное размещение.Методу передаются 4 значения: отступ слева, отступ сверху, длина компонента, высота компонента.
 		JLabelResult.setForeground(Color.YELLOW);
-		JLabelFullResult = new JLabel("_____________");
-		JLabelFullResult.setBounds(140, 360, 250, 25);
+		JLabelFullResult = new JLabel("_____________");// резервируем память для объекта JLabelFullResult
+		JLabelFullResult.setBounds(140, 360, 250, 25);// метод setBounds, который отвечает за точное размещение.Методу передаются 4 значения: отступ слева, отступ сверху, длина компонента, высота компонента.
 		JLabelFullResult.setForeground(Color.WHITE);
 		//JTextFieldResult = new JTextField();
 		//JTextFieldResult.setBounds(10, 380, 250, 25);
 		//JTextFieldResult.setEnabled(false);
 		//JTextFieldResult.setEnabled(false);
 		//JTextFieldAudioFrequency.setEditable(false);
-		JLabelResultCameras = new JLabel("Все созданные камеры:");
-		JLabelResultCameras.setBounds(10,390,250,25);
+		JLabelResultCameras = new JLabel("Все созданные камеры:");// резервируем память для объекта JLabelResultCameras
+		JLabelResultCameras.setBounds(10,390,250,25);// метод setBounds, который отвечает за точное размещение.Методу передаются 4 значения: отступ слева, отступ сверху, длина компонента, высота компонента.
 		JLabelResultCameras.setForeground(Color.YELLOW);
-		JLabelResultCamerasNumber = new JLabel("_____________");
-		JLabelResultCamerasNumber.setBounds(165,390,250,25);
+		JLabelResultCamerasNumber = new JLabel("_____________");// резервируем память для объекта JLabelResultCamerasNumber
+		JLabelResultCamerasNumber.setBounds(165,390,250,25);// метод setBounds, который отвечает за точное размещение.Методу передаются 4 значения: отступ слева, отступ сверху, длина компонента, высота компонента.
 		JLabelResultCamerasNumber.setForeground(Color.WHITE);
-		JCreateObject = new JButton("Добавить камеру");
-		JCreateObject.setBounds(290, 50, 150, 25);
+		JCreateObject = new JButton("Добавить камеру");// резервируем память для объекта JCreateObject
+		JCreateObject.setBounds(290, 50, 150, 25);// метод setBounds, который отвечает за точное размещение.Методу передаются 4 значения: отступ слева, отступ сверху, длина компонента, высота компонента.
 		JCreateObject.setBackground(Color.yellow);
-		JComboBoxNumberObject = new JComboBox();
-		JComboBoxNumberObject.setBounds(290, 100, 150, 25);
-		JButtonSaveParam = new JButton("Посчитать и сохранить параметры для этой камеры");
-		JButtonSaveParam.setBounds(10, 330, 340, 25);
+		JComboBoxNumberObject = new JComboBox();// резервируем память для объекта JComboBoxNumberObject 
+		JComboBoxNumberObject.setBounds(290, 100, 150, 25);// метод setBounds, который отвечает за точное размещение.Методу передаются 4 значения: отступ слева, отступ сверху, длина компонента, высота компонента.
+		JButtonSaveParam = new JButton("Посчитать и сохранить параметры для этой камеры");// резервируем память для объекта JButtonSaveParam
+		JButtonSaveParam.setBounds(10, 330, 340, 25);// метод setBounds, который отвечает за точное размещение.Методу передаются 4 значения: отступ слева, отступ сверху, длина компонента, высота компонента.
 		JButtonSaveParam.setBackground(Color.yellow);
-		l3 = new JLabel("");
-		l4 = new JLabel("");
-		t2 = new JTextField(10);
+		l3 = new JLabel("");// резервируем память для объекта l3
+		l4 = new JLabel("");// резервируем память для объекта l4
+		t2 = new JTextField(10);// резервируем память для объекта t2
 		//add(b1);
 	//	add(b2);
-		add(JLabelVideoBitrate);
-		add(JTextFieldVideoBitrate);
-		add(JLabelVideoLength);
-		add(JTextFieldVideoLength);
-		add(JCheckBoxAudioFile);
-		add(JLabelAudioFrequency);
-		add(JLabelWithAudio);
-		add(JTextFieldAudioFrequency);
-		add(JLabelBitCapacity);
-		add(JTextFieldAudioBitCapacity);
-		add(JButtonDecideAllCameras);
-		add(JLabelResult);
-		add(JLabelFullResult);
-		add(JCreateObject);
-		add(JComboBoxNumberObject);
-		add(JButtonSaveParam);
-		add(JLabelResultCameras);
-		add(JLabelResultCamerasNumber);
+		add(JLabelVideoBitrate); // Добавляем элемент 
+		add(JTextFieldVideoBitrate); // Добавляем элемент 
+		add(JLabelVideoLength); // Добавляем элемент 
+		add(JTextFieldVideoLength); // Добавляем элемент 
+		add(JCheckBoxAudioFile); // Добавляем элемент 
+		add(JLabelAudioFrequency); // Добавляем элемент 
+		add(JLabelWithAudio); // Добавляем элемент 
+		add(JTextFieldAudioFrequency); // Добавляем элемент 
+		add(JLabelBitCapacity); // Добавляем элемент 
+		add(JTextFieldAudioBitCapacity); // Добавляем элемент 
+		add(JButtonDecideAllCameras); // Добавляем элемент 
+		add(JLabelResult); // Добавляем элемент 
+		add(JLabelFullResult); // Добавляем элемент 
+		add(JCreateObject); // Добавляем элемент 
+		add(JComboBoxNumberObject); // Добавляем элемент 
+		add(JButtonSaveParam); // Добавляем элемент 
+		add(JLabelResultCameras); // Добавляем элемент 
+		add(JLabelResultCamerasNumber); // Добавляем элемент 
 		//add(JTextFieldResult);
 		//add(l4);
-		JCheckBoxAudioFile.addActionListener(handler);
-		JButtonDecideAllCameras.addActionListener(handler);
-		JCreateObject.addActionListener(handler);
-		JComboBoxNumberObject.addActionListener(handler);
-		JButtonSaveParam.addActionListener(handler);
-	    setDefaultCloseOperation(EXIT_ON_CLOSE);
-
+		JCheckBoxAudioFile.addActionListener(handler); // Вызываем метод addActionListener для добавления слушателя handler к источнику событий JCheckBoxAudioFile
+		JButtonDecideAllCameras.addActionListener(handler); // Вызываем метод addActionListener для добавления слушателя handler к источнику событий JButtonDecideAllCameras
+		JCreateObject.addActionListener(handler); // Вызываем метод addActionListener для добавления слушателя handler к источнику событий JCreateObject
+		JComboBoxNumberObject.addActionListener(handler); // Вызываем метод addActionListener для добавления слушателя handler к источнику событий JComboBoxNumberObject
+		JButtonSaveParam.addActionListener(handler); // Вызываем метод addActionListener для добавления слушателя handler к источнику событий JButtonSaveParam
+	    setDefaultCloseOperation(EXIT_ON_CLOSE); //это нужно для того чтобы при закрытии окна закрывалась и программа, иначе она останется висеть в процессах
 	    
-		ObjectNumberName++;
-		StringForJComboBox=String.valueOf(ObjectNumberName);
+	    																							//создаем первую камеру
+		ObjectNumberName++; // Делаем её значение = 1, тк в начале мы дали ей 0
+		StringForJComboBox=String.valueOf(ObjectNumberName); // В StringForJComboBox записываем значение 1, "индекс" камеры
 		//JOptionPane.showMessageDialog(null, "dasd");
 		//VideoObject[] VideoCamera = new VideoObject[32];
 		VideoCamera[ObjectNumberName] = new VideoObject();
