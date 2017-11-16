@@ -23,7 +23,7 @@ public class MyFrame extends JFrame {
 	public MyFrame(String s) {//Объявляем метод MyFrame
 		
 		super(s);// Создаем суперкласс
-		setLayout(null);//Устанавливаем значение null для "менеджера размещения"
+		setLayout(null);//Устанавливаем значение null для "менеджера размещения"3
 		//b1 = new JButton("Clear VSEEEEE");
 		//b1.setBounds(10,10,200,200);
 		//b2 = new JButton("Посчитать");
