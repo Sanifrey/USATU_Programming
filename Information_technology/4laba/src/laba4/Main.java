@@ -1,62 +1,62 @@
-package laba4;
+п»їpackage laba4;
 
 import java.util.Scanner;
 
 public class Main {
 
 	public static void main(String[] args) {
-		Scanner sc = new Scanner(System.in);//объявление сканера
-		System.out.println("Введите количество строк");
-		int ColStrok = sc.nextInt();//сканируем кол-во строк
-		System.out.println("Введите длину слова");
-		int ColDliny = sc.nextInt();//сканируем длину слова
-		String[] StrokaTexta = new String[ColStrok];//объявление одномерного массива типа String
-		int[][] TextInt = new int[ColStrok + 1][ColDliny];//объявление двумерного массива типа int
-		int[][] CountInt = new int[ColStrok][ColStrok];//объявление одномерного массива типа int для счетчика различий
-		int[][] CountInt2 = new int[ColStrok][ColStrok];//объявление одномерного массива типа int для счетчика сходств
+		Scanner sc = new Scanner(System.in);//РѕР±СЉСЏРІР»РµРЅРёРµ СЃРєР°РЅРµСЂР°
+		System.out.println("Р’РІРµРґРёС‚Рµ РєРѕР»РёС‡РµСЃС‚РІРѕ СЃС‚СЂРѕРє");
+		int ColStrok = sc.nextInt();//СЃРєР°РЅРёСЂСѓРµРј РєРѕР»-РІРѕ СЃС‚СЂРѕРє
+		System.out.println("Р’РІРµРґРёС‚Рµ РґР»РёРЅСѓ СЃР»РѕРІР°");
+		int ColDliny = sc.nextInt();//СЃРєР°РЅРёСЂСѓРµРј РґР»РёРЅСѓ СЃР»РѕРІР°
+		String[] StrokaTexta = new String[ColStrok];//РѕР±СЉСЏРІР»РµРЅРёРµ РѕРґРЅРѕРјРµСЂРЅРѕРіРѕ РјР°СЃСЃРёРІР° С‚РёРїР° String
+		int[][] TextInt = new int[ColStrok + 1][ColDliny];//РѕР±СЉСЏРІР»РµРЅРёРµ РґРІСѓРјРµСЂРЅРѕРіРѕ РјР°СЃСЃРёРІР° С‚РёРїР° int
+		int[][] CountInt = new int[ColStrok][ColStrok];//РѕР±СЉСЏРІР»РµРЅРёРµ РѕРґРЅРѕРјРµСЂРЅРѕРіРѕ РјР°СЃСЃРёРІР° С‚РёРїР° int РґР»СЏ СЃС‡РµС‚С‡РёРєР° СЂР°Р·Р»РёС‡РёР№
+		int[][] CountInt2 = new int[ColStrok][ColStrok];//РѕР±СЉСЏРІР»РµРЅРёРµ РѕРґРЅРѕРјРµСЂРЅРѕРіРѕ РјР°СЃСЃРёРІР° С‚РёРїР° int РґР»СЏ СЃС‡РµС‚С‡РёРєР° СЃС…РѕРґСЃС‚РІ
 		int i, j,h,g=-100, y = -100;
 
 		char[] CharStroka;
 		for (i = 0; i < ColStrok; i++) {
-			System.out.println("Введите слово");
-			StrokaTexta[i] = sc.next();//вводимая строка записывается в эту переменную
-			if (StrokaTexta[i].length() > ColDliny || StrokaTexta[i].length() < ColDliny) {//проверка совпадает ли длина слова
-				System.out.println("ошибка,неправильная длина слова");
+			System.out.println("Р’РІРµРґРёС‚Рµ СЃР»РѕРІРѕ");
+			StrokaTexta[i] = sc.next();//РІРІРѕРґРёРјР°СЏ СЃС‚СЂРѕРєР° Р·Р°РїРёСЃС‹РІР°РµС‚СЃСЏ РІ СЌС‚Сѓ РїРµСЂРµРјРµРЅРЅСѓСЋ
+			if (StrokaTexta[i].length() > ColDliny || StrokaTexta[i].length() < ColDliny) {//РїСЂРѕРІРµСЂРєР° СЃРѕРІРїР°РґР°РµС‚ Р»Рё РґР»РёРЅР° СЃР»РѕРІР°
+				System.out.println("РѕС€РёР±РєР°,РЅРµРїСЂР°РІРёР»СЊРЅР°СЏ РґР»РёРЅР° СЃР»РѕРІР°");
 				int wait = sc.nextInt();
 			}
 			CharStroka = StrokaTexta[i].toCharArray();//String->Char
 			for (j = 0; j < ColDliny; j++) {
-				TextInt[i][j] = Character.getNumericValue(CharStroka[j]);//Char->Int посимвольно
+				TextInt[i][j] = Character.getNumericValue(CharStroka[j]);//Char->Int РїРѕСЃРёРјРІРѕР»СЊРЅРѕ
 			}
 		}
 		for (h = 0; h < ColStrok; h++) {
 		for (i = 0; i < ColStrok; i++) {
 			for (j = 0; j < ColDliny; j++) {
-				if (i==h) {//Проверка чтобы массив не сравнимался с "пустым массивом"(последним)
-					//System.out.println("ERROR: ========Сработала зашита от сравнения одинаковых строк========");
+				if (i==h) {//РџСЂРѕРІРµСЂРєР° С‡С‚РѕР±С‹ РјР°СЃСЃРёРІ РЅРµ СЃСЂР°РІРЅРёРјР°Р»СЃСЏ СЃ "РїСѓСЃС‚С‹Рј РјР°СЃСЃРёРІРѕРј"(РїРѕСЃР»РµРґРЅРёРј)
+					//System.out.println("ERROR: ========РЎСЂР°Р±РѕС‚Р°Р»Р° Р·Р°С€РёС‚Р° РѕС‚ СЃСЂР°РІРЅРµРЅРёСЏ РѕРґРёРЅР°РєРѕРІС‹С… СЃС‚СЂРѕРє========");
 					break;
 				}
 
-				if (TextInt[h][j] != TextInt[i][j]) {//Проверка на различия
+				if (TextInt[h][j] != TextInt[i][j]) {//РџСЂРѕРІРµСЂРєР° РЅР° СЂР°Р·Р»РёС‡РёСЏ
 					CountInt[h][i] += 1;
-					System.out.println("LOG:        Различие в     " + (h+1) + " строке " + " со строкой "+(i+1)+ " в символе "+ (j + 1) );//Детектирует о нахождении различия
+					System.out.println("LOG:        Р Р°Р·Р»РёС‡РёРµ РІ     " + (h+1) + " СЃС‚СЂРѕРєРµ " + " СЃРѕ СЃС‚СЂРѕРєРѕР№ "+(i+1)+ " РІ СЃРёРјРІРѕР»Рµ "+ (j + 1) );//Р”РµС‚РµРєС‚РёСЂСѓРµС‚ Рѕ РЅР°С…РѕР¶РґРµРЅРёРё СЂР°Р·Р»РёС‡РёСЏ
 				} else {
 					CountInt2[h][i] += 1;
-					System.out.println("LOG:        Различий нет в " + (h+1) + " строке " + " со строкой "+(i+1)+ " в символе "+ (j + 1) );//Детектирует о нахождении сходства
+					System.out.println("LOG:        Р Р°Р·Р»РёС‡РёР№ РЅРµС‚ РІ " + (h+1) + " СЃС‚СЂРѕРєРµ " + " СЃРѕ СЃС‚СЂРѕРєРѕР№ "+(i+1)+ " РІ СЃРёРјРІРѕР»Рµ "+ (j + 1) );//Р”РµС‚РµРєС‚РёСЂСѓРµС‚ Рѕ РЅР°С…РѕР¶РґРµРЅРёРё СЃС…РѕРґСЃС‚РІР°
 				}
 			}
 
 
 		
-		if (CountInt[h][i] > y) {//ведётся счётчик различий
+		if (CountInt[h][i] > y) {//РІРµРґС‘С‚СЃСЏ СЃС‡С‘С‚С‡РёРє СЂР°Р·Р»РёС‡РёР№
 			y = CountInt[h][i];
 		}
-		if (CountInt2[h][i] > g){//ведётся счётчик сходств
+		if (CountInt2[h][i] > g){//РІРµРґС‘С‚СЃСЏ СЃС‡С‘С‚С‡РёРє СЃС…РѕРґСЃС‚РІ
 			g = CountInt2[h][i];
 		}
 		}
 		}
-		System.out.println("Максимально различий было:" + y);
-		System.out.println("Максиамально сходств было:" + g);
+		System.out.println("РњР°РєСЃРёРјР°Р»СЊРЅРѕ СЂР°Р·Р»РёС‡РёР№ Р±С‹Р»Рѕ:" + y);
+		System.out.println("РњР°РєСЃРёР°РјР°Р»СЊРЅРѕ СЃС…РѕРґСЃС‚РІ Р±С‹Р»Рѕ:" + g);
 	}
 }
