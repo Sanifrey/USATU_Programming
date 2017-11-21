@@ -23,7 +23,7 @@ public class MyFrame extends JFrame {
 	public MyFrame(String s) {//Объявляем метод MyFrame
 		
 		super(s);// Создаем суперкласс
-		setLayout(null);//Устанавливаем значение null для "менеджера размещения"3
+		setLayout(null);//Устанавливаем значение null для "менеджера размещения"
 		//b1 = new JButton("Clear VSEEEEE");
 		//b1.setBounds(10,10,200,200);
 		//b2 = new JButton("Посчитать");
@@ -101,7 +101,7 @@ public class MyFrame extends JFrame {
 		add(JCheckBoxAudioFile); // Добавляем элемент 
 		add(JLabelAudioFrequency); // Добавляем элемент 
 		add(JLabelWithAudio); // Добавляем элемент 
-		add(JTextFieldAudioFrequency); // Добавляем элемент d
+		add(JTextFieldAudioFrequency); // Добавляем элемент 
 		add(JLabelBitCapacity); // Добавляем элемент 
 		add(JTextFieldAudioBitCapacity); // Добавляем элемент 
 		add(JButtonDecideAllCameras); // Добавляем элемент 
